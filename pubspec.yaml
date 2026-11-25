@@ -4,86 +4,55 @@ description: "A new Flutter project."
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-# In Windows, build-name is used as the major, minor, and patch parts
-# of the product and file versions while build-number is used as the build suffix.
+# ----------------------------------------------------------------------
+# Versioning (Android: versionName / versionCode, iOS: CFBundleShortVersionString / CFBundleVersion)
+# ----------------------------------------------------------------------
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.13.7
+  sdk: ^3.13.7   # adapt if your Flutter channel ships with a different Dart version
 
-# Dependencies specify other packages that your package needs in order to work.
-# To automatically upgrade your package dependencies to the latest versions
-# consider running `flutter pub upgrade --major-versions`. Alternatively,
-# dependencies can be manually updated by changing the version numbers below to
-# the latest version available on pub.dev. To see which dependencies have newer
-# versions available, run `flutter pub outdated`.
+# ----------------------------------------------------------------------
+# DEPENDENCIES – packages your app needs at runtime
+# ----------------------------------------------------------------------
 dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.8
-
+  cupertino_icons: ^1.0.8          # iOS‑style icons
+  http: ^1.2.0                     # simple HTTP client (fallback)
+  dio: ^5.4.0                      # richer HTTP client + interceptors
+  flutter_secure_storage: ^9.2.0  # encrypted token storage (Android/iOS)
+  json_annotation: ^4.9.0
+  provider: ^6.1.0                 # simple state‑management
+  flutter_dotenv: ^5.0.2   # optional – lets you keep the URL out of source code
+# ----------------------------------------------------------------------
+# DEV DEPENDENCIES – packages used only while developing / building
+# ----------------------------------------------------------------------
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^6.0.0           # recommended lint rules
+  build_runner: ^2.4.11           # code‑gen driver
+  json_serializable: ^6.8.0       # generates *.g.dart files
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^6.0.0
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
+# ----------------------------------------------------------------------
+# FLUTTER SECTION – assets, fonts, etc.
+# ----------------------------------------------------------------------
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
+   # ----------  ASSETS ----------
+  # Put the .env file (and any future static files) in the “assets” folder.
+  # NOTE: The path **must be exactly** what you use later in `dotenv.load`.
+  assets:
+    - assets/.env 
 
-  # To add assets to your application, add an assets section, like this:
+  # Uncomment and add assets if you have any:
   # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  #   - assets/images/logo.png
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/to/resolution-aware-images
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/to/asset-from-package
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
+  # Uncomment and add fonts if you have any:
   # fonts:
-  #   - family: Schyler
+  #   - family: CustomFont
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/to/font-from-package
+  #       - asset: fonts/CustomFont-Regular.ttf
